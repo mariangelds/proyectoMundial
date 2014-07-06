@@ -1,0 +1,35 @@
+<h1>Listing news</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Titulo</th>
+      <th>Fecha</th>
+      <th>Hora</th>
+      <th>Contenido</th>
+      <th>Foto</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @news.each do |news| %>
+      <tr>
+        <td><%= news.titulo %></td>
+        <td><%= news.fecha %></td>
+        <td><%= news.hora %></td>
+        <td><%= news.contenido %></td>
+        <td><%= news.foto %></td>
+        <td><%= link_to 'Show', news %></td>
+        <td><%= link_to 'Edit', edit_news_path(news) %></td>
+        <td><%= link_to 'Destroy', news, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New New', new_news_path %>

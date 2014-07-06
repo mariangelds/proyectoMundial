@@ -1,4 +1,27 @@
 ProyectoMundial::Application.routes.draw do
+
+  resources :contacts
+
+  resources :news
+
+  resources :stadia
+
+  resources :results
+
+  resources :games
+
+  resources :stages
+
+  resources :statistics
+
+  resources :teams
+
+  root :to => "groups#index"
+
+  resources :groups
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

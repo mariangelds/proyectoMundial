@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  juegos: 1
+  ganados: 1
+  perdidos: 1
+  empatados: 1
+  goles: 1
+  puntaje: 1
+
+two:
+  juegos: 1
+  ganados: 1
+  perdidos: 1
+  empatados: 1
+  goles: 1
+  puntaje: 1

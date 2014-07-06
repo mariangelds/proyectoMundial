@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @stadium.nombre %>
+</p>
+
+<p>
+  <strong>Direccion:</strong>
+  <%= @stadium.direccion %>
+</p>
+
+<%= link_to 'Edit', edit_stadium_path(@stadium) %> |
+<%= link_to 'Back', stadia_path %>

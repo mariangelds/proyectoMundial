@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  golesGanados: 1
+  golesPerdidos: 1
+  empate: 1
+  desenlace: 1
+
+two:
+  golesGanados: 1
+  golesPerdidos: 1
+  empate: 1
+  desenlace: 1

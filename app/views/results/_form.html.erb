@@ -1,0 +1,14 @@
+<%= simple_form_for(@result) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :golesGanados %>
+    <%= f.input :golesPerdidos %>
+    <%= f.input :empate %>
+    <%= f.input :desenlace %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

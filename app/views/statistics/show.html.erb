@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Juegos:</strong>
+  <%= @statistic.juegos %>
+</p>
+
+<p>
+  <strong>Ganados:</strong>
+  <%= @statistic.ganados %>
+</p>
+
+<p>
+  <strong>Perdidos:</strong>
+  <%= @statistic.perdidos %>
+</p>
+
+<p>
+  <strong>Empatados:</strong>
+  <%= @statistic.empatados %>
+</p>
+
+<p>
+  <strong>Goles:</strong>
+  <%= @statistic.goles %>
+</p>
+
+<p>
+  <strong>Puntaje:</strong>
+  <%= @statistic.puntaje %>
+</p>
+
+<%= link_to 'Edit', edit_statistic_path(@statistic) %> |
+<%= link_to 'Back', statistics_path %>
