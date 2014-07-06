@@ -27,9 +27,35 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+gem 'thin'
+gem 'devise','3.2.4'
+gem 'devise-i18n'
+
+gem 'therubyracer'
+gem 'less-rails' #Sprockets (what Rails	3.1	uses for its asset pipeline) supports	LESS	
+gem 'twitter-bootstrap-rails'
+  
+
+#gemas para la aplicacion
+gem 'figaro'
+gem 'high_voltage'
+gem 'simple_form'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
+end
+
+group :development	do		
+  gem 'better_errors'	 	
+  gem 'quiet_assets'
+  gem 'rails_layout' 
+  gem 'debugger','~>1.6.6'
+end
+
+group :production do
+	gem 'rails_12factor'
+	gem 'thin'
 end
 
 # Use ActiveModel has_secure_password
