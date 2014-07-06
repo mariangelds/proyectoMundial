@@ -32,7 +32,7 @@
 
     <!-- For all other devices -->
     <!-- Size should be 32 x 32 pixels -->
-    <!-- <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %> -->
+    <%#= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
 
     <%= javascript_include_tag "application" %>
   </head>
@@ -51,8 +51,30 @@
             <ul class="nav">
               <li><%= link_to "Link1", "/path1"  %></li>
               <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
-            </ul>
+              <%if user_signed_in?%>
+                  <li><%=link_to current_user.email  %></li>
+
+                </ul>
+                <ul class="nav pull-right">
+
+                  <li class="dropdown">
+                    <a href="#"  class="dropdown-toggle" data-toggle="dropdown"><i class="icon-cog"></i>
+                      Ajustes
+                      <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><%= link_to "Datos de acceso", edit_usuario_registration_path  %></li>
+                      <li><%= link_to "Datos de perfil" %></li>
+                      <li><%= link_to "cerrar sesión", destroy_user_session_path, method: :delete %></li>
+                    </ul>
+                  </li>
+                </ul>
+
+            <%else%>
+                <li><%=link_to "Ingresar", new_user_session_path %><li>
+                </ul>
+            <%end%>
+    
           </div><!--/.nav-collapse -->
         </div>
       </div>

@@ -31,6 +31,10 @@ ProyectoMundial::Application.configure do
     :address => "smtp.mandrillapp.com", 
     :port => 587, 
     :user_name => ENV["MANDRILL_USERNAME"], 
-    :password => ENV["MANDRILL_API_KEY"] 
+    :password => ENV["MANDRILL_API_KEY"],
+    :perform_deliveries => true,
+    :raise_delivery_errors => true,
+    :delivery_method => :smtp,
+    :default_url_options => { host: 'localhost:3000'}
 }
 end
