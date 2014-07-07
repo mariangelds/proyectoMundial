@@ -4,7 +4,7 @@ class NewsController < ApplicationController
   # GET /news
   # GET /news.json
   def index
-    @news = New.all
+    @news = News.all
   end
 
   # GET /news/1
@@ -14,7 +14,7 @@ class NewsController < ApplicationController
 
   # GET /news/new
   def new
-    @news = New.new
+    @news = News.new
   end
 
   # GET /news/1/edit
@@ -24,14 +24,14 @@ class NewsController < ApplicationController
   # POST /news
   # POST /news.json
   def create
-    @news = New.new(news_params)
+    @news = News.new(news_params)
 
     respond_to do |format|
       if @news.save
-        format.html { redirect_to @news, notice: 'New was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @news }
+        format.html { redirect_to @news, notice: 'News was successfully created.' }
+        format.json { render :show, status: :created, location: @news }
       else
-        format.html { render action: 'new' }
+        format.html { render :new }
         format.json { render json: @news.errors, status: :unprocessable_entity }
       end
     end
@@ -42,10 +42,10 @@ class NewsController < ApplicationController
   def update
     respond_to do |format|
       if @news.update(news_params)
-        format.html { redirect_to @news, notice: 'New was successfully updated.' }
-        format.json { head :no_content }
+        format.html { redirect_to @news, notice: 'News was successfully updated.' }
+        format.json { render :show, status: :ok, location: @news }
       else
-        format.html { render action: 'edit' }
+        format.html { render :edit }
         format.json { render json: @news.errors, status: :unprocessable_entity }
       end
     end
@@ -56,7 +56,7 @@ class NewsController < ApplicationController
   def destroy
     @news.destroy
     respond_to do |format|
-      format.html { redirect_to news_url }
+      format.html { redirect_to news_index_url, notice: 'News was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -64,11 +64,11 @@ class NewsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_news
-      @news = New.find(params[:id])
+      @news = News.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def news_params
-      params.require(:news).permit(:titulo, :fecha, :hora, :contenido, :foto)
+      params.require(:news).permit(:titulo, :fecha, :contenido, :foto)
     end
 end
