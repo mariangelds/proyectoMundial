@@ -49,8 +49,6 @@
           <a class="brand" href="#">ProyectoMundial</a>
           <div class="container-fluid nav-collapse">
             <ul class="nav">
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
               <%if user_signed_in?%>
                   <li><%=link_to current_user.email  %></li>
 
@@ -64,7 +62,12 @@
                     </a>
                     <ul class="dropdown-menu">
                       <li><%= link_to "Datos de acceso", edit_user_registration_path  %></li>
-                      <li><%= link_to "Datos de perfil" %></li>
+                      <% p= Profile.where(:user_id => current_user.id)%>
+                      <%if p[0] == nil%>
+                        <li><%= link_to "Datos de perfil", new_profile_path%></li>
+                      <%else%>
+                        <li><%= link_to "Datos de perfil", edit_profile_path(current_user.id) %></li>
+                      <%end%>
                       <li><%= link_to "cerrar sesión", destroy_user_session_path, method: :delete %></li>
                     </ul>
                   </li>
@@ -72,6 +75,7 @@
 
             <%else%>
                 <li><%=link_to "Ingresar", new_user_session_path %><li>
+                <li><%=link_to "Contactenos", new_contact_path%><li>
                 </ul>
             <%end%>
     
@@ -81,28 +85,36 @@
     </div>
 
     <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="span3">
-          <div class="well sidebar-nav">
-            <ul class="nav nav-list">
-              <li class="nav-header">Sidebar</li>
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
-            </ul>
-          </div><!--/.well -->
-        </div><!--/span-->
-        <div class="span9">
-          <%= bootstrap_flash %>
-          <%= yield %>
-        </div>
-      </div><!--/row-->
+     <div class="row-fluid">
+       <%if user_signed_in?%>
+         <div class="span3">
+           <div class="well sidebar-nav">
+             <ul class="nav nav-list">
+               <li><%= link_to "Grupos", groups_path%></li>
+               <li><%= link_to "Equipos", teams_path%></li>
+               <li><%= link_to "Resultados", results_path  %></li>
+               <li><%= link_to "Juegos", games_path%></li>
+               <li><%= link_to "Estadios del Mundial", stadia_path  %></li>
+               <li><%= link_to "Etapas de Mundial", stages_path%></li>
+              <li><%= link_to "Estadisticas", statistics_path%></li>
+               <li><%= link_to "Noticias", news_index_path %></li>
+               <li><%= link_to "Contactos", contacts_path %></li>
+             </ul>
+           </div><!--/.well -->
+         </div><!--/span-->
+       <%end%>
+       <div class="span9">
+         <%= bootstrap_flash %>
+         <%= yield %>
+       </div>
+     </div><!--/row-->
 
-      <footer>
-        <p>&copy; Company 2014</p>
-      </footer>
+     <footer>
+       <p>&copy; Company 2014</p>
+       <p>Desarrolladores:Mariangela Delgado-Armando Hernandez-Javier Velasquez</p>
+     </footer>
 
-    </div> <!-- /container -->
+   </div> <!-- /container -->
 
   </body>
 </html>

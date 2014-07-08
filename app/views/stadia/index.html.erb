@@ -1,29 +1,38 @@
-<h1>Listing stadia</h1>
-
-<table>
+<%- model_class = Stadium -%>
+<div class="page-header">
+  <h1>Lista de Estadios</h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Nombre</th>
-      <th>Direccion</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:nombre) %></th>
+      <th><%= model_class.human_attribute_name(:direccion) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @stadia.each do |stadium| %>
       <tr>
+        <td><%= link_to stadium.id, stadium_path(stadium) %></td>
         <td><%= stadium.nombre %></td>
         <td><%= stadium.direccion %></td>
-        <td><%= link_to 'Show', stadium %></td>
-        <td><%= link_to 'Edit', edit_stadium_path(stadium) %></td>
-        <td><%= link_to 'Destroy', stadium, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l stadium.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_stadium_path(stadium), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      stadium_path(stadium),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Stadium', new_stadium_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_stadium_path,
+            :class => 'btn btn-primary' %>

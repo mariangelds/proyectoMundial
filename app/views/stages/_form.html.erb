@@ -1,11 +1,8 @@
-<%= simple_form_for(@stage) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :nombre %>
-  </div>
-
+<%= simple_form_for @stage, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :nombre %>
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                stages_path, :class => 'btn' %>
   </div>
 <% end %>

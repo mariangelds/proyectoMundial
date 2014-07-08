@@ -1,13 +1,10 @@
-<%= simple_form_for(@contact) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :nombre %>
-    <%= f.input :email %>
-    <%= f.input :mensaje %>
-  </div>
-
+<%= simple_form_for @contact, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :nombre %>
+  <%= f.input :email %>
+  <%= f.input :mensaje %>
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                contacts_path, :class => 'btn' %>
   </div>
 <% end %>

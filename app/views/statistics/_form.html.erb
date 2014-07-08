@@ -1,16 +1,14 @@
-<%= simple_form_for(@statistic) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :juegos %>
-    <%= f.input :ganados %>
-    <%= f.input :perdidos %>
-    <%= f.input :empatados %>
-    <%= f.input :goles %>
-    <%= f.input :puntaje %>
-  </div>
-
+<%= simple_form_for @statistic, :html => { :class => 'form-horizontal' } do |f| %>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<spam>Equipo</spam>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= f.collection_select :team_id, Team.all, :id, :nombre%>
+  <br>
+  <%= f.input :juegos %>
+  <%= f.input :ganados %>
+  <%= f.input :perdidos %>
+  <%= f.input :empatados %>
+  <%= f.input :goles %>
+  <%= f.input :puntaje %>
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),statistics_path,:class => 'btn' %>
   </div>
 <% end %>

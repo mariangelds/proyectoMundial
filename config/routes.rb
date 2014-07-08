@@ -1,5 +1,7 @@
 ProyectoMundial::Application.routes.draw do
 
+  resources :profiles
+
   devise_for :users
   resources :contacts
 
@@ -18,6 +20,7 @@ ProyectoMundial::Application.routes.draw do
   resources :teams
 
   root :to => "news#index"
+
 
   resources :groups
 

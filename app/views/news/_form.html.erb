@@ -1,15 +1,11 @@
-<%= simple_form_for(@news) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :titulo %>
-    <%= f.input :fecha %>
-    <%= f.input :hora %>
-    <%= f.input :contenido %>
-    <%= f.input :foto %>
-  </div>
-
+<%= simple_form_for @news, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :titulo %>
+  <%= f.input :fecha %>
+  <%= f.input :contenido %>
+  <%= f.input :foto %>
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                new_news_path, :class => 'btn' %>
   </div>
 <% end %>

@@ -1,1 +1,1 @@
-json.extract! @team, :id, :nombre, :bandera, :created_at, :updated_at
+json.extract! @team, :id, :nombre, :bandera, :group_id, :created_at, :updated_at

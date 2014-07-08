@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140706183347) do
+ActiveRecord::Schema.define(version: 20140708043625) do
 
   create_table "contacts", force: true do |t|
     t.string   "nombre"
@@ -45,6 +45,19 @@ ActiveRecord::Schema.define(version: 20140706183347) do
     t.datetime "updated_at"
   end
 
+  create_table "profiles", force: true do |t|
+    t.string   "nombre"
+    t.string   "telefono"
+    t.string   "direccion"
+    t.datetime "fecha_nac"
+    t.string   "compañia"
+    t.string   "twitter"
+    t.string   "facebook"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "results", force: true do |t|
     t.integer  "golesGanados"
     t.integer  "golesPerdidos"
@@ -52,6 +65,8 @@ ActiveRecord::Schema.define(version: 20140706183347) do
     t.integer  "desenlace"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "game_id"
+    t.integer  "team_id"
   end
 
   create_table "stadia", force: true do |t|
@@ -105,6 +120,7 @@ ActiveRecord::Schema.define(version: 20140706183347) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "rol"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

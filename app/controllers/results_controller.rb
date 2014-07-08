@@ -69,6 +69,6 @@ class ResultsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def result_params
-      params.require(:result).permit(:golesGanados, :golesPerdidos, :empate, :desenlace)
+      params.require(:result).permit(:golesGanados, :desenlace, :game_id, :team_id)
     end
 end

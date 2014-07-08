@@ -1,14 +1,47 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Team -%>
+<div class="page-header">
+  <h1>Equipo</h1>
+</div>
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @team.nombre %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:nombre) %>:</strong></dt>
+  <dd><%= @team.nombre %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:bandera) %>:</strong></dt>
+  <dd><%= image_tag @team.bandera %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:group_id) %>:</strong></dt>
+  <%g = Group.find(@team.group_id)%>
+  <dd><%=g.nombre %></dd>
+</dl>
+<%estadisticas = Statistic.find(@team.id)%>
+<table class="table table-striped">
+  <thead>
+    <th>Puntaje</th>
+    <th>Juegos</th>
+    <th>Ganados</th>
+    <th>Perdidos</th>
+    <th>Empatados</th>
+    <th>Goles</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%=estadisticas.puntaje%></td>
+      <td><%=estadisticas.juegos%></td>
+      <td><%=estadisticas.ganados%></td>
+      <td><%=estadisticas.perdidos%></td>
+      <td><%=estadisticas.empatados%></td>
+      <td><%=estadisticas.goles%></td>
+    </tr>
+  </tbody>
+</table>
 
-<p>
-  <strong>Bandera:</strong>
-  <%= @team.bandera %>
-</p>
-
-<%= link_to 'Edit', edit_team_path(@team) %> |
-<%= link_to 'Back', teams_path %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              teams_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_team_path(@team), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              team_path(@team),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

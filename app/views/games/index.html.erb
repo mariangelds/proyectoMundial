@@ -1,27 +1,39 @@
-<h1>Listing games</h1>
-
-<table>
+<%- model_class = Game -%>
+<div class="page-header">
+  <h1>Lista de Juegos</h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Fecha</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Fecha del juego</th>
+      <th>Etapa</th>
+      <th>EStadio</th>
+      <th><%=t 'Opciones', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @games.each do |game| %>
+    <%etapa = Stage.find(game.stage_id)%>
+    <%estadio = Stadium.find(game.stadium_id)%>
       <tr>
         <td><%= game.fecha %></td>
-        <td><%= link_to 'Show', game %></td>
-        <td><%= link_to 'Edit', edit_game_path(game) %></td>
-        <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= etapa.nombre%></td>
+        <td><%= estadio.nombre %></td>
+        <td>
+          <%= link_to 'Ver...', game_path(game) %>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_game_path(game), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      game_path(game),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Game', new_game_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_game_path,
+            :class => 'btn btn-primary' %>

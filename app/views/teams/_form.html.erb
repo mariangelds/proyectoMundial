@@ -1,12 +1,10 @@
-<%= simple_form_for(@team) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :nombre %>
-    <%= f.input :bandera %>
-  </div>
-
+<%= simple_form_for @team, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :nombre %>
+  <%= f.input :bandera %>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<spam>Grupo</spam>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= f.collection_select :group_id, Group.all, :id, :nombre%>
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                teams_path, :class => 'btn' %>
   </div>
 <% end %>
